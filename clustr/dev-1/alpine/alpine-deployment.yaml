@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alpine-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alpine-app
+  template:
+    metadata:
+      labels:
+        app: alpine-app
+    spec:
+      containers:
+      - name: alpine-container
+        image: alpine:latest
+        command: ["/bin/sh", "-c", "sleep 3600"] # Command to keep the container alive for an hour
+        ports:
+        - containerPort: 80 # Optional, if your Alpine app exposes a port
