@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-app-deployment
+  name: python-alpine-deployment
   labels:
-    app: python-app
+    app: python-alpine
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: python-app
+      app: python-alpine
   template:
     metadata:
       labels:
-        app: python-app
+        app: python-alpine
     spec:
       containers:
       - name: python-web
