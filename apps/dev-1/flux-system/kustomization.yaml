@@ -6,3 +6,4 @@ resources:
 - ../../dev/anchore
 - ../../dev/metrics
 - ../../dev/1Password
+- ../../dev/nginx-new
