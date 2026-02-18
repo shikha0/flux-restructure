@@ -7,3 +7,4 @@ resources:
 - ../../dev/metrics
 - ../../dev/1Password
 - ../../dev/nginx-new
+- ../../../clustr/dev/alpine

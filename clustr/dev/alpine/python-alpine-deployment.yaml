@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-alpine-deployment
+  namespace: default
+  labels:
+    app: python-alpine
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: python-alpine
+  template:
+    metadata:
+      labels:
+        app: python-alpine
+    spec:
+      containers:
+      - name: python-web
+        image: python:3.9-slim
+        command: ["python", "-m", "http.server", "8080"]
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "250m"
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
