@@ -1,0 +1,21 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: nginx-app
+  namespace: anchore-nginx
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: nginx
+      version: "latest" # Uses latest 15.x version
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami-repo
+        namespace: anchore-nginx
+  values:
+    service:
+      type: ClusterIP
+      ports:
+        http: 80
+    replicaCount: 2
