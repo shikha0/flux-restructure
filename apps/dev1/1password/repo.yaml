@@ -2,6 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: banzaicloud-stable
+  namespace: 1password-busybox
 spec:
   interval: 1h
   url: https://kubernetes-charts.banzaicloud.com
