@@ -5,3 +5,4 @@ resources:
 - gotk-sync.yaml
 - ../../dev/anchore
 - ../../dev/metrics
+- ../../dev/1Password
