@@ -1,0 +1,27 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: busybox-app
+  namespace: 1password-busybox
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: pod
+      version: "0.3.x"
+      sourceRef:
+        kind: HelmRepository
+        name: banzaicloud-stable
+  values:
+    image:
+      repository: busybox
+      tag: latest
+    # Important: Busybox needs a command to stay running
+    command: ["/bin/sh", "-c", "sleep 3600"]
+    resources:
+      limits:
+        cpu: 100m
+        memory: 128Mi
+      requests:
+        cpu: 50m
+        memory: 64Mi
