@@ -7,4 +7,5 @@ resources:
 - ../../dev/metrics
 - ../../dev/1Password
 - ../../dev/nginx-new
-- ../../../clustr/dev/alpine
+- ../../../clustr/dev/alpine/alpine-deployment.yaml
+- ../../../clustr/dev/alpine/python-alpine-deployment.yaml
