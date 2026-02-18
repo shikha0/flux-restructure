@@ -9,3 +9,4 @@ resources:
 - ../../dev/nginx-new
 - ../../../clustr/dev/alpine/alpine-deployment.yaml
 - ../../../clustr/dev/alpine/python-alpine-deployment.yaml
+- ../../../clustr/dev/python/python-deployment.yaml
