@@ -1,0 +1,21 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: cert-manager
+  namespace: cert-manager # Recommended to use a dedicated namespace
+spec:
+  interval: 1h
+  chart:
+    spec:
+      chart: cert-manager
+      version: "v1.19.3"
+      sourceRef:
+        kind: HelmRepository
+        name: cert-manager
+        namespace: cert-manager
+  install:
+    remediation:
+      retries: 3
+  values:
+    # CRITICAL: Without this, the pods will error out because CRDs are missing
+    installCRDs: true
