@@ -1,0 +1,26 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: wordpress
+  namespace: default
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: wordpress
+      version: "28.1.9" # Updated to current stable
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: wordpress
+  values:
+    # Essential to reach Ready state quickly if no StorageClass is set
+    persistence:
+      enabled: false
+    mariadb:
+      primary:
+        persistence:
+          enabled: false
+    # Uses a basic Service for faster startup
+    service:
+      type: ClusterIP
