@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: pod
-      version: "0.3.x"
+      version: "latest"
       sourceRef:
         kind: HelmRepository
         name: banzaicloud-stable
