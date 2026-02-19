@@ -10,7 +10,7 @@ spec:
       # The name of the chart within the OCI registry
       chart: nginx
       sourceRef:
-        kind: OCIRepository
+        kind: HelmRepository
         name: bitnami-oci
         namespace: anchore-nginx
   values:
