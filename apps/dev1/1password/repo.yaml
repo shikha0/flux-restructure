@@ -5,4 +5,4 @@ metadata:
   namespace: 1password-busybox
 spec:
   interval: 1h
-  url: https://kubernetes-charts.banzaicloud.com
+  url: https://charts.bitnami.com
