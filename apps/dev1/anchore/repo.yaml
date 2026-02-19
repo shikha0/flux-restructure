@@ -1,10 +1,11 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: OCIRepository
+kind: HelmRepository
 metadata:
   name: bitnami-oci
   namespace: anchore-nginx
 spec:
   interval: 1h
+  type: oci
   # Fixes 403: Bitnami now uses OCI via Docker Hub
   url: oci://registry-1.docker.io/bitnamicharts
   ref:
