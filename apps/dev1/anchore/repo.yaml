@@ -2,7 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: OCIRepository
 metadata:
   name: bitnami-oci
-  namespace: flux-system
+  namespace: anchore-nginx
 spec:
   interval: 1h
   # Fixes 403: Bitnami now uses OCI via Docker Hub
