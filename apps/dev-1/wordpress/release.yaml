@@ -2,25 +2,46 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: wordpress
-  namespace: default
+  namespace: wordpress
 spec:
   interval: 30m
   chart:
     spec:
       chart: wordpress
-      version: "28.1.9" # Updated to current stable
+      version: "28.1.9"
       sourceRef:
         kind: HelmRepository
         name: bitnami
-        namespace: wordpress
+        namespace: wordpress # Adjust if your 'bitnami' repo is in another namespace
   values:
-    # Essential to reach Ready state quickly if no StorageClass is set
-    persistence:
-      enabled: false
+    # 1. Re-enable internal MariaDB (Default is true, but explicitly set for clarity)
     mariadb:
+      enabled: true
       primary:
         persistence:
-          enabled: false
-    # Uses a basic Service for faster startup
+          enabled: false # Set to true if you have a default StorageClass
+
+    # 2. WordPress Persistence
+    persistence:
+      enabled: false # Set to true if you have a default StorageClass
+
+    # 3. Service Configuration
     service:
       type: ClusterIP
+
+    # 4. Probes to fix "Connection Refused"
+    # Gives WordPress and MariaDB extra time to complete initial handshake
+    readinessProbe:
+      enabled: true
+      initialDelaySeconds: 90 
+      periodSeconds: 10
+      failureThreshold: 6
+    
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 180
+      periodSeconds: 20
+
+    # 5. Security Context (Bitnami images run as non-root on 8080)
+    containerPorts:
+      http: 8080
