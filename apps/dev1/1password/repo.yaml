@@ -5,4 +5,4 @@ metadata:
   namespace: 1password-busybox
 spec:
   interval: 1h
-  url: https://charts.bitnami.com
+  url: https://bjw-s.github.io/helm-charts
