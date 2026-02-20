@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: ./dev-1/group-A  # Path from the repo root
+  path: ./dev-1/group-1  # Path from the repo root
   prune: true
   sourceRef:
     kind: GitRepository
