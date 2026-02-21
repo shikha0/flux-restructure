@@ -12,5 +12,5 @@ spec:
     kind: GitRepository
     name: flux-system
   path: ./cluster/dev-1
-  prune: false
+  prune: true
   wait: true
