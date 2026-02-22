@@ -4,6 +4,6 @@ metadata:
   name: bitnami
   namespace: flux-system
 spec:
+  type: oci                   # This is the critical missing field
   interval: 1h
-  url: https://charts.bitnami.com/bitnami
-
+  url: oci://registry-1.docker.io/bitnamicharts
