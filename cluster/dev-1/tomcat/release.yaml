@@ -17,6 +17,8 @@ spec:
   install:
     createNamespace: true
   values:
+    persistence:
+      enabled: false
     # Scale to 3 replicas
     replicaCount: 3
     
