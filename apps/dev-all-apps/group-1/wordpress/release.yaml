@@ -31,7 +31,7 @@ spec:
 
     # 4. Probes to fix "Connection Refused"
     # Gives WordPress and MariaDB extra time to complete initial handshake
-    replicaCount: 5 
+    replicaCount: 2 
     readinessProbe:
       enabled: true
       initialDelaySeconds: 90 
